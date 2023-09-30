@@ -61,8 +61,9 @@ function addToCart(destination) {
             icon: 'success',
             title: '¡Compra Exitosa!',
             text: `Tu viaje ha sido comprado con éxito `,
-            showConfirmButton: false,
-            timer: 2000 
+            confirmButtonText: 'Cerrar',
+            showConfirmButton: true,
+            timer: 20000 
         });
     }
 
