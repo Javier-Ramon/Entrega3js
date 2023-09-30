@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "nombre": "París",
+        "descripcion": "La Ciudad del Amor",
+        "imagen": "../recursos/paris.jpg",
+        "precio": 1200000
+    },
+    {
+        "id": 2,
+        "nombre": "Nueva York",
+        "descripcion": "La Gran Manzana",
+        "imagen": "../recursos/nw.jpg",
+        "precio": 1200000 
+    },
+    {
+        "id": 3,
+        "nombre": "Roma",
+        "imagen": "../recursos/roma.jpg",
+        "descripcion": "La Ciudad Eterna",
+        "precio": 1500000
+    },
+    {
+        "id": 4,
+        "nombre": "Buenos Aires",
+        "descripcion": "La gran Ciudad",
+        "imagen": "../recursos/bsas.jpg",
+        "precio": 100000
+    },
+    {
+        "id": 5,
+        "nombre": "Cordoba",
+        "descripcion": "La Ciudad de las Montañas",
+        "imagen": "../recursos/cordoba.jpg",
+        "precio": 80000
+    }
+
+]
