@@ -88,7 +88,7 @@ clearCartButton.addEventListener('click', () => {
     updateCart();
    
     Swal.fire({
-        icon: 'info',
+        icon: 'sucess',
         title: 'Carrito Vacío',
         text: 'El carrito de compras ha sido vaciado.' ,
         confirmButtonText: 'Ok'
