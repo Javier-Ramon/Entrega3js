@@ -17,7 +17,7 @@
         "id": 3,
         "nombre": "Roma",
         "imagen": "../recursos/roma.jpg",
-        "descripcion": "La Ciudad Eterna",
+        "descripcion": "La Ciudad Eterna ",
         "precio": 1500000
     },
     {

@@ -6,13 +6,19 @@ const clearCartButton = document.getElementById('clear-cart');
 const destinations = []; 
 
 
-fetch('../destinos.json')
-    .then(response => response.json())
-    .then(data => {
-        destinations.push(...data);
-        displayDestinations();
-    });
+if (localStorage.getItem('destination')) {
+    destinations.push(...JSON.parse(localStorage.getItem('destination')));
+} else {
 
+    fetch('../destinos.json')
+        .then(response => response.json())
+        .then(data => {
+            destinations.push(...data);
+
+            localStorage.setItem('destinations', JSON.stringify(data));
+            displayDestinations();
+        });
+}
 
 function displayDestinations() {
     destinationsContainer.innerHTML = '';
@@ -56,15 +62,27 @@ function addToCart(destination) {
     cart.total += destination.precio;
     updateCart();
 
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    Swal.fire({
+        icon: 'success',
+         title: '¡Producto Agregado!',
+        text: `Se ha agregado "${destination.nombre}" al carrito`,
+         confirmButtonText: 'Cerrar'
+     });
+
     function Comprar() {
         Swal.fire({
             icon: 'success',
             title: '¡Compra Exitosa!',
-            text: `Tu viaje ha sido comprado con éxito `,
+            text: `Tu viaje a "${destination.nombre}"  han sido comprado con éxito `,
             confirmButtonText: 'Cerrar',
             showConfirmButton: true,
-            timer: 20000 
+            timer: 200000 
         });
+        cart.items = [];
+        cart.total = 0;
+        updateCart();
     }
 
   
@@ -72,6 +90,7 @@ function addToCart(destination) {
     ButtonComprar.addEventListener('click', Comprar);
 
 }
+
 function updateCart() {
     cartItems.innerHTML = '';
     cart.items.forEach(item => {
@@ -80,12 +99,15 @@ function updateCart() {
         cartItems.appendChild(li);
     });
     cartTotal.textContent = cart.total;
+    localStorage.setItem('cart', JSON.stringify(cart));
 }
 
 clearCartButton.addEventListener('click', () => {
     cart.items = [];
     cart.total = 0;
     updateCart();
+
+    localStorage.removeItem('cart')
    
     Swal.fire({
         icon: 'success',
@@ -94,3 +116,8 @@ clearCartButton.addEventListener('click', () => {
         confirmButtonText: 'Ok'
     });
 });
+
+if (localStorage.getItem('cart')){
+    cart = JSON.parse(localStorage.getItem('cart'));
+    updateCart();
+}
